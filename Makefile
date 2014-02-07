@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cfeijoo <cfeijoo@student.42.fr>            +#+  +:+       +#+         #
+#    By: kube <kube@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/03 17:38:57 by cfeijoo           #+#    #+#              #
-#    Updated: 2013/12/23 10:35:06 by cfeijoo          ###   ########.fr        #
+#    Updated: 2014/02/04 17:18:57 by kube             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,16 @@ INCFOLDER = ./libft/includes
 SRC	= get_next_line.c
 OSRC = $(SRC:.c=.o)
 
-TESTFILE = main.c
+TESTFILE = test.c
 OTESTFILE = $(TESTFILE:.c=.o)
 TESTNAME = test_gnl
 
 CFLAGS = -Wall -Wextra -Werror
 CC = /usr/bin/gcc
+
+ifeq ($(GDB), 1)
+	CFLAGS += -g
+endif
 
 $(NAME):
 	$(CC) -c -I$(INCFOLDER) $(SRC) $(CFLAGS)
