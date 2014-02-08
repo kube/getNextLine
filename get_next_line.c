@@ -6,7 +6,7 @@
 /*   By: kube <kube@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/23 09:15:38 by cfeijoo           #+#    #+#             */
-/*   Updated: 2014/02/08 15:23:14 by kube             ###   ########.fr       */
+/*   Updated: 2014/02/08 16:36:52 by kube             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,13 +114,14 @@ static t_bufferlist			*get_fdbuffer(int fd, t_bufferlist **bufferlist)
 int							get_next_line(int fd, char **line)
 {
 	static t_bufferlist		*bufferlist = NULL;
-	t_bufferlist			*fdbuffer;
+	static t_bufferlist		*fdbuffer = NULL;
 	t_buffer				*current;
 	unsigned int			length;
 
 	if (fd >= 0)
 	{
-		fdbuffer = get_fdbuffer(fd, &bufferlist);
+		if (!fdbuffer || fd != fdbuffer->fd)
+			fdbuffer = get_fdbuffer(fd, &bufferlist);
 		while (fdbuffer->lines_left == 0)
 		{
 			if (!fill_buffer(fd, fdbuffer, &fdbuffer->buffer))

@@ -6,13 +6,13 @@
 /*   By: kube <kube@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/23 09:18:03 by cfeijoo           #+#    #+#             */
-/*   Updated: 2014/02/03 23:44:44 by kube             ###   ########.fr       */
+/*   Updated: 2014/02/08 16:22:03 by kube             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 7
+# define BUFF_SIZE 4096
 
 typedef struct			s_buffer
 {
